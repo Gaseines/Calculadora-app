@@ -12,7 +12,7 @@
 
     //Dados icone histórico
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/relogio"
+        android:id="@+id/historico"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/relogio2"

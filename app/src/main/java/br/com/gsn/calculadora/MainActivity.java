@@ -2,19 +2,30 @@ package br.com.gsn.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
+
+import br.com.gsn.calculadora.DataBase.DatabaseHelper;
+import br.com.gsn.calculadora.Historico.Historico;
+import br.com.gsn.calculadora.Historico.HistoricoActivity;
+import br.com.gsn.calculadora.Historico.ListaHistoricoFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button numeroZero,numeroUm,numeroDois,numeroTres,numeroQuatro,numeroCinco,numeroSeis,numeroSete,
             numeroOito,numeroNove,virgula,soma,subtração,multiplicação,divisão,igual,limpar,mod;
+
+
+    private ImageView historico;
 
     private TextView txtConta,txtResultado;
     private ImageView apagar;
@@ -24,8 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         IniciarComponentes();
         getSupportActionBar().hide();
+
 
         numeroZero.setOnClickListener(this);
         numeroUm.setOnClickListener(this);
@@ -44,11 +57,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiplicação.setOnClickListener(this);
         mod.setOnClickListener(this);
 
+
         limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txtConta.setText("");
                 txtResultado.setText("");
+            }
+        });
+
+        historico = findViewById(R.id.historico);
+        historico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent hist = new Intent(MainActivity.this, HistoricoActivity.class );
+                startActivity(hist);
             }
         });
 
@@ -85,12 +108,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         txtResultado.setText((CharSequence) String.valueOf(resultado));
                     }
 
-                }catch (Exception e){
+                }catch (Exception h){
 
                 }
 
+                adicionar();
+
             }
+
+
         });
+
+
+
 
     }
 
@@ -201,5 +231,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AdicionarUmaExpressao("%", false);
                 break;
         }
+
     }
+
+
+    private void adicionar() {
+        if (txtConta.getText().toString().equals("Digite uma conta")){
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        }else {
+            DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
+            Historico h = new Historico();
+            h.setConta(txtConta.getText().toString());
+            h.setResultado(txtResultado.getText().toString());
+            databaseHelper.createHistorico(h);
+        }
+
+    }
+
 }
+
+
