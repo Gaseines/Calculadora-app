@@ -20,12 +20,32 @@
             android:layout_marginTop="15dp"
             android:src="@drawable/icone_voltar2" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Histórico"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="35dp"
+            android:textStyle="bold"/>
+
         <FrameLayout
             android:id="@+id/frame_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="546dp">
 
         </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            tools:layout_editor_absoluteY="65dp"
+            android:background="@drawable/end_bg" />
+
+
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

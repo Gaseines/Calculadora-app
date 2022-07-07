@@ -14,10 +14,8 @@
 
         <TextView
             android:id="@+id/textViewId"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textColor="@color/white"
             android:visibility="invisible"/>
 
@@ -26,7 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textAlignment="textEnd"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="35dp" />
 
@@ -43,7 +42,7 @@
             android:id="@+id/textViewResultado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -53,10 +52,9 @@
 
 
     <View
-        android:layout_width="350dp"
+        android:layout_width="411dp"
         android:layout_height="2dp"
-        android:layout_gravity="right"
         android:layout_marginTop="5dp"
-        android:background="@color/white"/>
+        android:background="@drawable/bg_fita"/>
 
 </LinearLayout>

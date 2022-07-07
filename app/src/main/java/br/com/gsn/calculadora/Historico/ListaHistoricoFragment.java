@@ -18,6 +18,7 @@ import br.com.gsn.calculadora.R;
 
 public class ListaHistoricoFragment extends Fragment {
 
+
     private DatabaseHelper databaseHelper;
 
 
@@ -39,6 +40,7 @@ public class ListaHistoricoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_lista_historico, container, false);
+
 
         databaseHelper = new DatabaseHelper(getActivity());
         ListView lv = v.findViewById(R.id.list_view_historico);
